@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NewPage</title>
+</head>
+<body>
+<script type="text/javascript">
+function on(html){
+
+window.open(html,'_self')
+}
+
+</script>
+
+<input type="button" onclick="on('/index')" value="index">
+
+<h1>My Web Page</h1>
+
+<p id="demo">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">点击这里</button>
+
+<p><b>注释：</b>myFunction 保存在名为 "myScript.js" 的外部文件中。</p>
+
+<script type="text/javascript" src="/static/myScript.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+    <title>FlexPaper</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width" />
+    <style type="text/css" media="screen">
+        html, body	{ height:100%; }
+        body { margin:0; padding:0; overflow:auto; }
+        #flashContent { display:none; }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href=/static/css/flexpaper.css />
+    <script type="text/javascript" src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/js/flexpaper.js"></script>
+    <script type="text/javascript" src="/static/js/flexpaper_handlers.js"></script>
+
+</head>
+<body>
+<p id="demo">A Paragraph.</p>
+
+<button type="button" onclick="myFunction()">{{ data }}</button>
+
+    <div style="position:absolute;left:10px;top:10px;"></div>
+    <div id="documentViewer" class="flexpaper_viewer" style="width:770px;height:500px"></div>
+
+    <script type="text/javascript">
+        //function getDocumentUrl(document){
+       //     return "php/services/view.php?doc={doc}&format={format}&page={page}".replace("{doc}",document);
+        //}
+
+       var fileInfoList = {{ data | safe}};
+       var swfFile = fileInfoList[0];
+
+        $('#documentViewer').FlexPaperViewer(
+                { config : {
+
+                    //SWFFile : '/static/docs/Paper.pdf.swf',
+                    SWFFile :swfFile ,
+
+                    Scale : 0.6,
+                    ZoomTransition : 'easeOut',
+                    ZoomTime : 0.5,
+                    ZoomInterval : 0.2,
+                    FitPageOnLoad : true,
+                    FitWidthOnLoad : false,
+                    FullScreenAsMaxWindow : false,
+                    ProgressiveLoading : false,
+                    MinZoomSize : 0.2,
+                    MaxZoomSize : 5,
+                    SearchMatchAll : false,
+                    InitViewMode : 'Portrait',
+                    RenderingOrder : 'flash',
+                    StartAtPage : '',
+
+                    ViewModeToolsVisible : true,
+                    ZoomToolsVisible : true,
+                    NavToolsVisible : true,
+                    CursorToolsVisible : true,
+                    SearchToolsVisible : true,
+                    WMode : 'window',
+                    localeChain: 'en_US'
+                }}
+        );
+    </script>
+</body>
+</html>

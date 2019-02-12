@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<title>Categorize Links</title>
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="description" content="Link categorization control." />
+		<style type="text/css">
+			h1 {
+				text-align: center;
+				background-color: green;
+			}
+			body {
+				margin: 10%;
+				border: solid .2em black;
+			}
+			p, ul, h2, form {
+				margin-left: 10%;
+				margin-right: 10%;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Categorize Links</h1>
+
+		<p>Choose the category for the selected link{{ links|pluralize }}:</p>
+
+		<form method="post" action="{{ path }}">
+			<table>
+				{{ form }}
+			</table>
+			<p>
+				<input type="hidden" name="action" value="changeCategory" />
+				<input type="submit" name="cancel" value="Cancel" />
+				<input type="submit" name="categorize" value="Categorize" />
+			</p>
+		</form>
+
+		<h2>This categorization will affect the following:</h2>
+		<ul>
+			{% for link in links %}
+				<li>{{ link.url.linkHTML }} on page {{ link.page.linkHTML }}</li>
+			{% endfor %}
+		</ul>
+
+	</body>
+</html>

@@ -1,0 +1,17 @@
+{% extends "admin/base_site.html" %}
+{% load i18n %}
+{% block breadcrumbs %}
+<div class="breadcrumbs">
+    <a href="../../../">{% trans "Home" %}</a> &rsaquo;
+    <a href="../../">{{ app_label|capfirst|escape}}</a> &rsaquo;
+    {% if has_change_permission %}
+        <a href="../">{{ opts.verbose_name_plural|capfirst }}</a>
+    {% else %}
+        {{ opts.verbose_name_plural|capfirst }}
+    {% endif %}
+    &rsaquo; My Custom View
+</div>
+{% endblock %}
+{% block content %}
+    <!-- do stuff here -->
+{% endblock %}
